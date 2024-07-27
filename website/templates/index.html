@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Sensor Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ESP32 Sensor Data</h1>
+            <p>Real-time Monitoring of Temperature and Humidity</p>
+        </header>
+        <section class="data-display">
+            <div class="data-card">
+                <div class="icon temperature-icon"></div>
+                <div class="data-info">
+                    <h2>Temperature</h2>
+                    <p id="temperature">-- °C</p>
+                </div>
+            </div>
+            <div class="data-card">
+                <div class="icon humidity-icon"></div>
+                <div class="data-info">
+                    <h2>Humidity</h2>
+                    <p id="humidity">-- %</p>
+                </div>
+            </div>
+        </section>
+        <section class="controls">
+            <button id="fetchData">Fetch Data</button>
+            <button id="resetData">Reset Data</button>
+        </section>
+        <div id="lastUpdated" class="hidden"></div>
+    </div>
+
+    <script>
+        const socket = io();
+
+        socket.on('update', function(data) {
+            document.getElementById('temperature').textContent = `${data.temperature} °C`;
+            document.getElementById('humidity').textContent = `${data.humidity} %`;
+            document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+            document.getElementById('lastUpdated').classList.remove('hidden');
+        });
+
+        document.getElementById('fetchData').addEventListener('click', function() {
+            socket.emit('requestData');
+        });
+
+        document.getElementById('resetData').addEventListener('click', function() {
+            socket.emit('resetData');
+        });
+    </script>
+</body>
+</html>

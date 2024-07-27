@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 1em;
+    margin: 5px 0 15px;
+    color: #555;
+}
+
+.data-display {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    margin-bottom: 20px;
+}
+
+.data-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1;
+    max-width: calc(50% - 20px); /* Adjust to fit with gap */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
+}
+
+.data-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.data-info {
+    text-align: left;
+}
+
+.data-card h2 {
+    font-size: 1.4em;
+    color: #333;
+    margin: 0 0 5px;
+}
+
+.data-card p {
+    font-size: 1.8em;
+    margin: 0;
+    color: #007bff;
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.temperature-icon {
+    background-image: url('https://img.icons8.com/ios/100/000000/temperature.png');
+}
+
+.humidity-icon {
+    background-image: url('https://img.icons8.com/ios/100/000000/humidity.png');
+}
+
+.chart-container {
+    margin-top: 20px;
+    position: relative;
+    height: 300px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    max-width: 48%; /* Adjust button width */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#lastUpdated {
+    margin-top: 5px;
+    font-size: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .data-card {
+        max-width: 100%;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px; /* Space between buttons in column layout */
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
